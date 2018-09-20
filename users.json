@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "name": "Miklу",
+    "password": "qwerty",
+    "dateOfBirth": "1997-10-07T21:00:00.000Z",
+    "dateOfFirstLogin": "2007-10-09T15:20:43.000Z",
+    "dateOfNextNotification": "2018-11-12T14:54:00.000Z",
+    "information": "null"
+  },
+  {
+    "id": "2",
+    "name": "Alex",
+    "password": "qwerty",
+    "dateOfBirth": "1997-10-07T21:00:00.000Z",
+    "dateOfFirstLogin": "2015-01-15T13:20:43.000Z",
+    "dateOfNextNotification": "2019-01-12T14:54:00.000Z",
+    "information": "some info"
+  },
+  {
+    "id": "3",
+    "name": "Mike",
+    "password": "qwerty",
+    "dateOfBirth": "1997-10-07T21:00:00.000Z",
+    "dateOfFirstLogin": "2014-10-29T15:20:43.000Z",
+    "dateOfNextNotification": "2018-10-12T14:54:00.000Z",
+    "information": "some info lorem"
+  }
+]
