@@ -1,0 +1,133 @@
+<div class="container" style="margin-left: 35% ">
+
+  <div class="col-xs-5 col-xm-5 col-lg-5 col-md-5">
+    <form [formGroup]="userForm">
+      <div class="form-group">
+
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+
+        <div *ngIf="userForm.get('name').invalid && userForm.get('name').touched">
+          <div *ngIf="userForm.get('name').errors['required']"
+               class="alert alert-danger">
+            Name is missing.
+          </div>
+          <div *ngIf="userForm.get('name').errors['moreTwoWords']"
+               class="alert alert-danger">
+            Name must be one or two words.
+            Space before second word.
+          </div>
+          <div *ngIf="userForm.get('name').errors['firstLetter']"
+               class="alert alert-danger">
+            Only letters. First letter must be uppercase.
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <label>Age</label>
+          <input type="text" class="form-control" formControlName="age" placeholder="Enter your age">
+
+          <div *ngIf="userForm.get('age').invalid && userForm.get('age').touched">
+            <div *ngIf="userForm.get('age').errors['required']"
+                 class="alert alert-danger">
+              Age is missing.
+            </div>
+            <div *ngIf="userForm.get('age').errors['age']"
+                 class="alert alert-danger">
+              Only number. Not space.
+            </div>
+            <div *ngIf="userForm.get('age').errors['age']"
+                 class="alert alert-danger">
+              Age must be between 18 and 65.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Birthday</label>
+          <input type="text" class="form-control" formControlName="birthday" placeholder="Enter your birthday">
+
+          <div *ngIf="userForm.get('birthday').invalid && userForm.get('birthday').touched">
+            <div *ngIf="userForm.get('birthday').errors['required']"
+                 class="alert alert-danger">
+              Birthday is missing.
+            </div>
+            <div *ngIf="userForm.get('birthday').errors['birthday']"
+                 class="alert alert-danger">
+              Date must be in 'YYYY/MM/DD' format.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Date of Login</label>
+          <input type="text" class="form-control" formControlName="dateOfLogin" placeholder="Enter date of login">
+
+          <div *ngIf="userForm.get('dateOfLogin').invalid && userForm.get('dateOfLogin').touched">
+            <div *ngIf="userForm.get('dateOfLogin').errors['required']"
+                 class="alert alert-danger">
+              Date of login is missing.
+            </div>
+            <div *ngIf="userForm.get('dateOfLogin').errors['dateOfLogin']"
+                 class="alert alert-danger">
+              Date must be in 'DD MMMM YYYY' format.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Date of notification</label>
+          <input type="text" class="form-control" formControlName="dateOfNotification"
+                 placeholder="Enter date of notification">
+
+          <div *ngIf="userForm.get('dateOfNotification').invalid && userForm.get('dateOfNotification').touched">
+            <div *ngIf="userForm.get('dateOfNotification').errors['required']"
+                 class="alert alert-danger">
+              Date of notification is missing.
+            </div>
+            <div *ngIf="userForm.get('dateOfNotification').errors['dateOfNotification']"
+                 class="alert alert-danger">
+              Date must be in 'DD-MMM-YY' format.
+            </div>
+          </div>
+
+        </div>
+
+        <button class="btn btn-success" type="submit" [disabled]="userForm.invalid" (click)="submitHandler()">Submit
+        </button>
+        <button class="btn btn-danger" type="reset" (click)="hiddenForm()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <div [hidden]="!formValid" style="margin-left: 1.5%">
+    <div class="row">
+      <div class="col-sm-4">User Name:</div>
+      <div class="col-sm">{{ userForm.value.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">Age:</div>
+      <div class="col-sm">{{ userForm.value.age }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">Birthday:</div>
+      <div class="col-sm">{{ userForm.value.birthday }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">Date of Login:</div>
+      <div class="col-sm">{{ userForm.value.dateOfLogin }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">Date of Notification:</div>
+      <div class="col-sm">{{ userForm.value.dateOfNotification }}</div>
+    </div>
+  </div>
+
+</div>
