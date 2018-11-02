@@ -1,1 +1,21 @@
-<app-form></app-form>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#" *ngIf="logIn() == 2">{{'Develop by' | translate}} Kirill</a>
+  <a class="navbar-brand" [routerLink]="'/info'" *ngIf="logIn() == 1">{{users.name}}</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" *ngIf="logIn() == 1" [routerLink]="'/info'">{{'Information' | translate}}</a>
+      <a class="nav-item nav-link" *ngIf="logIn() == 1" [routerLink]="'/change'">{{'Update information' | translate}}</a>
+    </div>
+  </div>
+  <div>
+    {{'Change language' | translate}}
+    <select matNativeControl (change)="switchLanguage($event)">
+      <option value="en">En</option>
+      <option value="ru">Ru</option>
+    </select>
+  </div>
+  <button class="btn btn-success" [routerLink]="'/login'" *ngIf="logIn() == 2" (click)="logIn()">{{'Log in button' | translate}}</button>
+  <button class="btn btn-danger" [routerLink]="'/login'" *ngIf="logIn() == 1" (click)="logOut()">{{'Log out button' | translate}}</button>
+
+</nav>
+<router-outlet></router-outlet>

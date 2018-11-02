@@ -6,11 +6,9 @@ export default function (control: AbstractControl): Promise<any> {
   const symbols = /^[A-Z](?:[a-z]+)?(?: [A-Z](?:[a-z]+)?)?$/;
   return new Promise((resolve) => {
     setTimeout(() => {
-
       if (result.length > 2 || !value.match(symbols)) {
         resolve({
-          'moreTwoWords': true,
-          'firstLetter': true
+          'moreTwoWords': true
         });
       }
       resolve(null);

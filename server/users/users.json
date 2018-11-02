@@ -2,28 +2,31 @@
   {
     "id": 1,
     "name": "Miklу",
+    "age": "35",
     "password": "qwerty",
-    "dateOfBirth": "1997-10-07T21:00:00.000Z",
-    "dateOfFirstLogin": "2007-10-09T15:20:43.000Z",
-    "dateOfNextNotification": "2018-11-12T14:54:00.000Z",
+    "birthday": "1997-10-07T21:00:00.000Z",
+    "dateOfLogin": "2007-10-09T15:20:43.000Z",
+    "dateOfNotification": "2018-11-12T14:54:00.000Z",
     "information": "null"
   },
   {
     "id": 2,
     "name": "Alex",
+    "age": "25",
     "password": "qwerty",
-    "dateOfBirth": "1997-10-07T21:00:00.000Z",
-    "dateOfFirstLogin": "2015-01-15T13:20:43.000Z",
-    "dateOfNextNotification": "2019-01-12T14:54:00.000Z",
+    "birthday": "1997-10-07T21:00:00.000Z",
+    "dateOfLogin": "2015-10-11T13:20:43.000Z",
+    "dateOfNotification": "2019-01-12T14:54:00.000Z",
     "information": "some info"
   },
   {
     "id": 3,
     "name": "Mike",
+    "age": "45",
     "password": "qwerty",
-    "dateOfBirth": "1997-10-07T21:00:00.000Z",
-    "dateOfFirstLogin": "2014-10-29T15:20:43.000Z",
-    "dateOfNextNotification": "2018-10-12T14:54:00.000Z",
+    "birthday": "1997-10-07T21:00:00.000Z",
+    "dateOfLogin": "2014-10-10T15:20:43.000Z",
+    "dateOfNotification": "2018-01-12T14:54:00.000Z",
     "information": "some info lorem"
   }
 ]
