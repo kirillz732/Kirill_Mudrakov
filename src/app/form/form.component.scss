@@ -1,0 +1,26 @@
+.form{
+  margin-left: 37%;
+  margin-top: 50px;
+}
+.successBTN {
+  margin-top: 5px;
+  padding: 3px 7px;
+  -webkit-border-radius: 5px;
+  background: -moz-linear-gradient(#4af264, #39ba4d, #4af264);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#4af264), to(#4af264), color-stop(0.5, #39ba4d));
+  color: #333;
+  border-radius: 6px;
+  border: 1px solid #666;
+  box-shadow: 10px 4px 10px 3px #888;
+}
+.dangerBTN {
+  margin-top: 5px;
+  padding: 3px 7px;
+  -webkit-border-radius: 5px;
+  background: -moz-linear-gradient(#f22b45, #ba172d, #f23071);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#f22b45), to(#ba172d), color-stop(0.5, #f23071));
+  color: #333;
+  border-radius: 6px;
+  border: 1px solid #666;
+  box-shadow: 10px 4px 10px 3px #888;
+}

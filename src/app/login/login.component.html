@@ -1,0 +1,37 @@
+<div class="form col-xs-5 col-xm-5 col-lg-5 col-md-5">
+
+  <form [formGroup]="loginForm" >
+    <app-loader [loader]="isLoading"></app-loader>
+    <label>{{'Name' | translate}}</label>
+    <input type="text" class="form-control" formControlName="name" placeholder="{{'Name' | translate}}">
+
+    <div *ngIf="loginForm.get('name').invalid && loginForm.get('name').touched ">
+      <div *ngIf="loginForm.get('name').errors['required']"
+           class="alert alert-danger">
+        {{'Empty' | translate}}
+      </div>
+      <div *ngIf="loginForm.get('name').errors['moreTwoWords']"
+           class="alert alert-danger">
+        {{'Name error' | translate}}
+      </div>
+    </div>
+
+    <label>{{'Password' | translate}}</label>
+    <input type="password" class="form-control" formControlName="password" placeholder="{{'Password' | translate}}">
+
+    <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched ">
+      <div *ngIf="loginForm.get('password').errors['required']"
+           class="alert alert-danger">
+        {{'Empty' | translate}}
+      </div>
+    </div>
+    <div>
+      <input type="submit" class="successBTN btn-block" [disabled]="loginForm.invalid" value="{{'Log in button' | translate}}"
+      (click)="onSubmit()">
+      <input type="submit" class="dangerBTN btn-block" value="{{'Forgot password button' | translate}}" (click)="password()">
+    </div>
+
+  </form>
+</div>
+
+
