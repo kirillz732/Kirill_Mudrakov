@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Miklу",
+    "name": "Mikl",
     "age": "35",
     "password": "qwerty",
     "birthday": "1997-10-07T21:00:00.000Z",
@@ -27,6 +27,56 @@
     "birthday": "1997-10-07T21:00:00.000Z",
     "dateOfLogin": "2014-10-10T15:20:43.000Z",
     "dateOfNotification": "2018-01-12T14:54:00.000Z",
+    "information": "some info lorem"
+  },
+  {
+    "id": 4,
+    "name": "Alexey",
+    "age": "21",
+    "password": "qwerty",
+    "birthday": "1996-10-07T21:00:00.000Z",
+    "dateOfLogin": "2017-10-10T15:20:43.000Z",
+    "dateOfNotification": "2018-01-12T14:54:00.000Z",
+    "information": "some info lorem sdfasdf "
+  },
+  {
+    "id": 5,
+    "name": "Aleksander",
+    "age": "19",
+    "password": "qwerty",
+    "birthday": "1999-10-07T21:00:00.000Z",
+    "dateOfLogin": "2012-10-10T15:20:43.000Z",
+    "dateOfNotification": "2018-01-12T14:54:00.000Z",
+    "information": "some info loremloremloremlorem"
+  },
+  {
+    "id": 6,
+    "name": "Sergey",
+    "age": "18",
+    "password": "qwerty",
+    "birthday": "200-10-07T21:00:00.000Z",
+    "dateOfLogin": "2008-10-10T15:20:43.000Z",
+    "dateOfNotification": "2018-01-12T14:54:00.000Z",
+    "information": "some info lorem"
+  },
+  {
+    "id": 7,
+    "name": "Andrey",
+    "age": "20",
+    "password": "qwerty",
+    "birthday": "1998-10-07T21:00:00.000Z",
+    "dateOfLogin": "2015-12-10T15:20:43.000Z",
+    "dateOfNotification": "2017-01-12T14:54:00.000Z",
+    "information": "some info lorem"
+  },
+  {
+    "id": 8,
+    "name": "Tor",
+    "age": "20",
+    "password": "qwerty",
+    "birthday": "1998-27-07T21:00:00.000Z",
+    "dateOfLogin": "2015-12-10T15:20:43.000Z",
+    "dateOfNotification": "2017-01-12T14:54:00.000Z",
     "information": "some info lorem"
   }
 ]

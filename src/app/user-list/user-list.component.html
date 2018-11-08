@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <div class="col-7">
+    <div class="wrapper">
+      <div class="chosen disable-user-select w-75">
+        <div class="screen d-flex flex-row">
+          <app-chosen class="d-flex align-self-stretch flex-grow-1" [currentUser]="currentUser" ></app-chosen>
+          <app-button class="d-flex align-self-stretch" (click)="getUsers()" [(Dropdown)]="Dropdown" (click)="closeDropdown()"></app-button>
+        </div>
+      </div>
+      <div class="scroll {{Dropdown? 'hide' : 'show'}}">
+        <app-drop-down class="scroll" [(selectedUser)]="currentUser" [users]="users"  [(Dropdown)]="Dropdown"></app-drop-down>
+      </div>
+    </div>
+  </div>
+</div>

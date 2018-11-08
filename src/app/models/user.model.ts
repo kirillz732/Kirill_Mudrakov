@@ -2,8 +2,8 @@ export class User {
   id: number;
   name: string;
   password: string;
-  dateOfBirth: string;
-  dateOfFirstLogin: string;
-  dateOfNextNotification: string;
+  birthday: string;
+  dateOfLogin: string;
+  dateOfNotification: string;
   information: string;
 }

@@ -1,0 +1,29 @@
+<div class="d-flex flex-row flex-grow-1 user-chosen hover cursor-pointer p-2" (click)="Dropdown()">
+  <div *ngIf="userSelected(); else presholder" class="d-flex flex-grow-1">
+    <div class="first-col w-50">
+      <div class="ellipsis">
+        <span ngClass="labelField">{{'Name' | translate}}:</span>
+        <span ngClass="valueField text-primary">{{currentUser.name}}</span>
+      </div>
+      <div>
+        <span ngClass="labelField">{{'Age' | translate}}:</span>
+        <span ngClass="valueField text-primary">{{currentUser.age}}</span>
+      </div>
+      <div class="ellipsis">
+        <span ngClass="labelField">{{'Information' | translate}}:</span>
+        <span ngClass="valueField text-primary">{{currentUser.information}}</span>
+      </div>
+    </div>
+    <div class="align-self-center ml-4">
+      <span ngClass="labelField">{{'Birthday' | translate}}:</span>
+      <span ngClass="valueField text-primary">{{currentUser.birthday}}</span>
+    </div>
+  </div>
+  <ng-template #presholder>
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+      <div class="lead ">
+        <h5>{{'Select' | translate}}</h5>
+      </div>
+    </div>
+  </ng-template>
+</div>

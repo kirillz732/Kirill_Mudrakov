@@ -1,0 +1,8 @@
+<div class="d-flex flex-column screen">
+  <div class="d-flex flex-row fields">
+    <input #searchField type="text" class="d-flex flex-grow-1 lead field text-center justify-content-center"
+         contenteditable="true" placeholder="{{'SearchName' | translate}}">
+    <app-btn class="d-flex align-self-stretch" (click)="searchInfo(searchField.value)"></app-btn>
+  </div>
+  <app-users (onSelectedUser)="onSelectUser($event)" [users]="users" [(Dropdown)]="Dropdown"></app-users>
+</div>

@@ -1,0 +1,13 @@
+.arrow span {
+  font-size: 25px;
+}
+
+.arrow-container {
+  text-align: center;
+  cursor: pointer;
+  border-left: 3px solid #666;
+}
+
+.arrow-active {
+  background-color: rgba(0,0,0,.12);
+}

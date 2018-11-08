@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": [
       "dom",
-      "es2017"
+      "es7"
     ],
     "sourceMap": true,
     "outDir": "./build",

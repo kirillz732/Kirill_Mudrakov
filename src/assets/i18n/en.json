@@ -24,5 +24,8 @@
   "Notification date": "Notification date",
   "Update information": "Change information",
   "Name not found message": "User not found ",
-  "Name or password is incorrect": "The name or password is incorrect"
+  "Name or password is incorrect": "The name or password is incorrect",
+  "SearchName": "Search by name",
+  "Search": "User list",
+  "Select": "Selected a user"
 }

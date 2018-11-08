@@ -24,5 +24,8 @@
   "Log out button": "Выйти",
   "Update information": "Изменение информации",
   "Name not found message": "Пользователь не найден",
-  "Name or password is incorrect": "Неверное имя или пароль"
+  "Name or password is incorrect": "Неверное имя или пароль",
+  "SearchName": "Поиск по имени",
+  "Search": "Список пользователей",
+  "Select": "Выберите пользователя"
 }

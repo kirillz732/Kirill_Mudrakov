@@ -1,0 +1,28 @@
+.chosen {
+  position: static;
+  display: inline;
+  background: none;
+  width: auto;
+  height: auto;
+  top: auto;
+  right: auto;
+}
+.screen {
+  border-radius: 10px;
+  margin-top: 50px;
+  border: 3px solid #666;
+  box-shadow: 10px 4px 10px 3px #888;
+  margin-bottom: 20px;
+}
+.scroll{
+  overflow-y: scroll;
+  box-shadow: 10px 4px 10px 3px #888;
+  height: 40rem;
+}
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}

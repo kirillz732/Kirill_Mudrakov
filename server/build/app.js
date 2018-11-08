@@ -13,18 +13,18 @@ app.get('/users', (req, res) => {
     res.json(users);
 });
 app.get('/users/:id', (req, res) => {
-    const user = users.find(user => {
+    const idU = users.find(user => {
         return user.id === Number(req.params.id);
     });
-    res.send(user);
+    res.send(idU);
 });
 app.put('/users/:id', (req, res) => {
-    const user = users.find(user => {
+    const idU = users.find(user => {
         return user.id === Number(req.params.id);
     });
-    if (user) {
-        user.name = req.body.name;
-        user.information = req.body.information;
+    if (idU) {
+        idU.name = req.body.name;
+        idU.information = req.body.information;
         res.sendStatus(200);
     }
     else {
@@ -67,20 +67,24 @@ app.post('/users/login', (req, res) => {
     }, 3000);
 });
 app.put('/users/change/:id', (req, res) => {
-    const User = users.find((user) => user.id === Number(req.body.id));
-    if (User) {
-        User.name = req.body.name;
-        User.age = req.body.age;
-        User.birthday = req.body.birthday;
-        User.password = req.body.password;
-        User.dateOfLogin = req.body.dateOfLogin;
-        User.dateOfNotification = req.body.dateOfNotification;
-        User.information = req.body.information;
-        res.send(User);
+    const userId = users.find((user) => user.id === Number(req.body.id));
+    if (userId) {
+        userId.name = req.body.name;
+        userId.age = req.body.age;
+        userId.birthday = req.body.birthday;
+        userId.password = req.body.password;
+        userId.dateOfLogin = req.body.dateOfLogin;
+        userId.dateOfNotification = req.body.dateOfNotification;
+        userId.information = req.body.information;
+        res.send(userId);
     }
     else {
         res.sendStatus(404);
     }
+});
+app.post('/users/name', (req, res) => {
+    const name = users.filter(user => user.name.includes(req.body.name));
+    res.send(name);
 });
 app.post('/users/password', (req, res) => {
     const Password = users.find((user) => user.name === req.body.name);

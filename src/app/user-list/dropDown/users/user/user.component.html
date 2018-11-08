@@ -1,0 +1,24 @@
+<div class="click d-flex flex-row user cursor-pointer p-2 hover" (click)="selectUser()">
+  <div class="first-col w-50">
+    <div>
+      {{'Name' | translate}}: <span class="text-primary">{{user.name}}</span>
+    </div>
+    <div>
+      {{'Birthday' | translate}}: <span class="text-primary">{{user.birthday}}</span>
+    </div>
+    <div>
+      {{'Notification date' | translate}}: <span class="text-primary">{{user.dateOfNotification}}</span>
+    </div>
+    <div>
+      {{'Information' | translate}}: <span class="text-primary">{{user.information}}</span>
+    </div>
+  </div>
+  <div class="indent ml-4">
+    <div>
+      {{'Age' | translate}}: <span class="text-primary">{{user.age}}</span>
+    </div>
+    <div>
+      {{'Date of login' | translate}}: <span class="text-primary">{{user.dateOfLogin}}</span>
+    </div>
+  </div>
+</div>

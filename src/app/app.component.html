@@ -5,6 +5,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" *ngIf="logIn() == 1" [routerLink]="'/info'">{{'Information' | translate}}</a>
       <a class="nav-item nav-link" *ngIf="logIn() == 1" [routerLink]="'/change'">{{'Update information' | translate}}</a>
+      <a class="nav-item nav-link" *ngIf="logIn() == 1" [routerLink]="'/search'">{{'Search' | translate}}</a>
     </div>
   </div>
   <div>
