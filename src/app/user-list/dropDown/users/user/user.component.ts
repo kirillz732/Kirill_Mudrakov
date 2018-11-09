@@ -24,6 +24,7 @@ export class UserComponent implements OnInit {
   }
 
   selectUser() {
+    this.DropdownChange.emit(!this.Dropdown);
     this.onSelectedUser.emit(this.user);
   }
 }

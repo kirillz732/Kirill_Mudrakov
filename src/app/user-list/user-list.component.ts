@@ -29,6 +29,6 @@ export class UserListComponent implements OnInit {
   }
 
   closeDropdown() {
-    this.DropdownChange.emit(!this.Dropdown);
+    this.DropdownChange.emit(this.Dropdown);
   }
 }

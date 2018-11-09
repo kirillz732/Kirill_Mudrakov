@@ -12,6 +12,7 @@ export class DropDownComponent implements OnInit {
   @Input() Dropdown = true;
   @Input() users: User[];
   @Input() selectedUser: User;
+  @Output() DropdownChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectedUserChange: EventEmitter<User> = new EventEmitter<User>();
 
   constructor(
@@ -29,6 +30,7 @@ export class DropDownComponent implements OnInit {
   }
 
   onSelectUser(user: User) {
+    this.DropdownChange.emit(this.Dropdown);
     this.selectedUserChange.emit(user);
   }
 }

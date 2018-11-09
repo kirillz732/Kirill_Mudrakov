@@ -8,8 +8,9 @@ import {User} from '../../user-servise.interface';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  @Input() Dropdown = true;
   @Input() users: User[];
+  @Input() Dropdown = true;
+  @Output() DropdownChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onSelectedUser: EventEmitter<User> = new EventEmitter<User>();
 
   constructor() {
@@ -19,6 +20,7 @@ export class UsersComponent implements OnInit {
   }
 
   selectedUser(user: User) {
+    this.DropdownChange.emit(!this.Dropdown);
     this.onSelectedUser.emit(user);
   }
 }

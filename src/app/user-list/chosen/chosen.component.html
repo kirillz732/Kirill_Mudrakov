@@ -1,5 +1,5 @@
-<div class="d-flex flex-row flex-grow-1 user-chosen hover cursor-pointer p-2" (click)="Dropdown()">
-  <div *ngIf="userSelected(); else presholder" class="d-flex flex-grow-1">
+<div class="d-flex flex-row flex-grow-1 user-chosen hover cursor-pointer p-2" (click)="closeDeopdown()" >
+  <div *ngIf="userSelected(); else presholder" class="d-flex flex-grow-1" >
     <div class="first-col w-50">
       <div class="ellipsis">
         <span ngClass="labelField">{{'Name' | translate}}:</span>

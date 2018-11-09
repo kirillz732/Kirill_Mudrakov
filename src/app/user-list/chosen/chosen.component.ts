@@ -9,8 +9,8 @@ import {User} from '../user-servise.interface';
 })
 export class ChosenComponent implements OnInit {
   @Input() currentUser: User;
-  @Input() closeDropdown = true;
-  @Output() closeDropdownChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() Dropdown = true;
+  @Output() DropdownChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {
   }
@@ -22,7 +22,7 @@ export class ChosenComponent implements OnInit {
     return this.currentUser;
   }
 
-  Dropdown() {
-    this.closeDropdownChange.emit(!this.closeDropdown);
+  closeDeopdown() {
+    this.DropdownChange.emit(!this.Dropdown);
   }
 }
