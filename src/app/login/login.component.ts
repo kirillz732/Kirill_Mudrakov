@@ -2,9 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import nameValidator from '../Validators/nameValidator';
-import {LoginService} from '../services/login.service';
-import {User} from '../models/user.model';
 import {Router} from '@angular/router';
+import {UserLogin} from '../user-list/user-servise.interface';
+import {LoginUser} from '../redux/action/user.action';
+import { UserLoginState} from '../redux/redusers/user.state';
+import {Store} from '@ngrx/store';
+
+export enum STATUS {
+  UNAUTHORIZED = 401,
+}
 
 @Component({
   selector: 'app-login',
@@ -14,12 +20,12 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   isLoading: boolean;
-
   loginForm: FormGroup;
+
 
   constructor(
     private router: Router,
-    private loginService: LoginService) {
+    private store: Store<UserLoginState>) {
   }
 
   ngOnInit() {
@@ -31,22 +37,25 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    const FORM_DATE = this.loginForm.value;
-    this.isLoading = true;
-    this.loginService.login(FORM_DATE.name, FORM_DATE.password)
-      .subscribe((user: User) => {
-        if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.router.navigate(['/info']);
-          this.isLoading = false;
-        } else {
-          alert('Incorrect name or password');
-          this.isLoading = false;
-        }
-      });
+    const form = this.loginForm.value;
+     this.isLoading = true;
+
+    const userLogin: UserLogin = {
+      name: form.name,
+      password: form.password
+    };
+    this.store.dispatch(new LoginUser(userLogin));
+
+    this.store.subscribe( user => {
+      if (user != null) {
+        this.isLoading = false;
+        localStorage.setItem('user', JSON.stringify(user));
+        this.router.navigateByUrl('/info');
+      }
+    });
   }
 
-  password() {
+  passwordPage() {
     this.router.navigate(['/password']);
   }
 }

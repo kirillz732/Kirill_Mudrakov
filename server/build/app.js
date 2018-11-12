@@ -61,10 +61,8 @@ app.get('/', (req, res) => {
     res.send('hello guest');
 });
 app.post('/users/login', (req, res) => {
-    setTimeout(() => {
-        const Userr = users.find((user) => user.name === req.body.name && user.password === req.body.password);
-        res.send(Userr);
-    }, 3000);
+    const Userr = users.find((user) => user.name === req.body.name && user.password === req.body.password);
+    res.send(Userr);
 });
 app.put('/users/change/:id', (req, res) => {
     const userId = users.find((user) => user.id === Number(req.body.id));

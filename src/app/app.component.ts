@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import {Component, OnInit} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'Kirill_Mudrakov';
 
-  users = JSON.parse(localStorage.getItem('user'));
-
   login = 0;
 
   logIn() {
-    if (localStorage.getItem('user')) {
+    if (this.store.select('UserLogin').subscribe(({currentUser}) => {
+      return currentUser;
+    })) {
       return this.login = 1;
     } else {
       return this.login = 2;
@@ -26,7 +27,9 @@ export class AppComponent {
   }
 
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private store: Store<{}>,
+    private translate: TranslateService) {
     translate.setDefaultLang('en');
   }
 

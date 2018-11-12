@@ -5,19 +5,12 @@ import dateValidator from '../Validators/dateValidator';
 import * as moment from 'moment';
 import nameValidator from '../Validators/nameValidator';
 import {UpdateService} from '../services/updateUser.service';
-import {User} from '../models/user.model';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {UserLoginState} from '../redux/redusers/user.state';
+import {UpdatingCurrentUser} from '../redux/action/user.action';
+import {User} from '../user-list/user-servise.interface';
 
-interface InterfaceFormValues {
-  id: string;
-  name: string;
-  age: string;
-  password: string;
-  birthday: string;
-  dateOfLogin: string;
-  dateOfNotification: string;
-  information: string;
-}
 
 @Component({
   selector: 'app-form',
@@ -26,67 +19,50 @@ interface InterfaceFormValues {
 })
 export class FormComponent implements OnInit {
 
-  public formValues: InterfaceFormValues = {
-    id: '',
-    name: '',
-    age: '',
-    password: '',
-    birthday: '',
-    dateOfLogin: '',
-    dateOfNotification: '',
-    information: ''
-  };
+  selectedUser;
 
   constructor(
     private router: Router,
-    private updateService: UpdateService) {
+    private updateService: UpdateService,
+    private store: Store<UserLoginState>) {
   }
 
   userForm: FormGroup;
-  formValid: boolean = true;
 
   ngOnInit() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    this.store.select('UserLogin').subscribe(({currentUser}) => {
+      this.selectedUser = currentUser.data;
+      return this.selectedUser;
+    });
     this.userForm = new FormGroup({
-      id: new FormControl(user.id),
-      name: new FormControl(user.name, Validators.required, nameValidator),
-      age: new FormControl(user.age, [Validators.required, ageValidator]),
-      password: new FormControl(user.password),
-      birthday: new FormControl(moment(user.birthday, 'YYYY-DD-MM').format('YYYY/MM/DD'),
+      id: new FormControl(this.selectedUser.id),
+      name: new FormControl(this.selectedUser.name, Validators.required, nameValidator),
+      age: new FormControl(this.selectedUser.age, [Validators.required, ageValidator]),
+      password: new FormControl(this.selectedUser.password),
+      birthday: new FormControl(moment(this.selectedUser.birthday, 'YYYY-DD-MM').format('YYYY/MM/DD'),
         [Validators.required, dateValidator]),
-      dateOfLogin: new FormControl(moment(user.dateOfLogin, 'YYYY-DD-MM').format('DD MMMM YYYY'),
+      dateOfLogin: new FormControl(moment(this.selectedUser.dateOfLogin, 'YYYY-DD-MM').format('DD MMMM YYYY'),
         [Validators.required, dateValidator]),
-      dateOfNotification: new FormControl(moment(user.dateOfNotification, 'YYYY-DD-MM').format('DD-MMM-YY'),
+      dateOfNotification: new FormControl(moment(this.selectedUser.dateOfNotification, 'YYYY-DD-MM').format('DD-MMM-YY'),
         [Validators.required, dateValidator]),
-      information: new FormControl(user.information, Validators.required)
+      information: new FormControl(this.selectedUser.information, Validators.required)
     });
   }
 
   submitHandler() {
-    this.formValid = false;
 
-    if (!this.formValid) {
-      this.formValues.id = this.userForm.value.id;
-      this.formValues.name = this.userForm.value.name;
-      this.formValues.age = this.userForm.value.age;
-      this.formValues.password = this.userForm.value.password;
-      this.formValues.birthday = moment(this.userForm.value.birthday, 'YYYY/MM/DD').format('YYYY-DD-MM');
-      this.formValues.dateOfLogin = moment(this.userForm.value.dateOfLogin, 'DD MMMM YYYY').format('YYYY-DD-MM');
-      this.formValues.dateOfNotification = moment(this.userForm.value.dateOfNotification, 'DD-MMM-YY').format('YYYY-DD-MM');
-      this.formValues.information = this.userForm.value.information;
+    const updateUser: User = {
+      id: this.userForm.value.id,
+      name: this.userForm.value.name,
+      age: this.userForm.value.age,
+      password: this.userForm.value.password,
+      birthday: moment(this.userForm.value.birthday, 'YYYY/MM/DD').format('YYYY-DD-MM'),
+      dateOfLogin: moment(this.userForm.value.dateOfLogin, 'DD MMMM YYYY').format('YYYY-DD-MM'),
+      dateOfNotification: moment(this.userForm.value.dateOfNotification, 'DD-MMM-YY').format('YYYY-DD-MM'),
+      information: this.userForm.value.information
+    };
 
-      this.updateService.update(this.formValues.id, this.formValues.name, this.formValues.age,
-        this.formValues.password, this.formValues.birthday, this.formValues.dateOfLogin,
-        this.formValues.dateOfNotification, this.formValues.information)
-        .subscribe((user: User) => {
-          if (user) {
-            this.router.navigate(['/info']);
-            localStorage.setItem('user', JSON.stringify(user));
-          } else {
-            alert('Error');
-          }
-        });
+    this.store.dispatch(new UpdatingCurrentUser(updateUser));
 
-    }
   }
 }

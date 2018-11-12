@@ -1,16 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+
 import * as moment from 'moment';
-
-
-interface InterfaceFormValues {
-  name: string;
-  age: string;
-  password: string;
-  birthday: string;
-  dateOfLogin: string;
-  dateOfNotification: string;
-  information: string;
-}
+import { UserLoginState} from '../redux/redusers/user.state';
+import {User} from '../user-list/user-servise.interface';
 
 @Component({
   selector: 'app-info',
@@ -19,10 +12,11 @@ interface InterfaceFormValues {
 })
 export class InfoComponent implements OnInit {
 
-  constructor() {
+  constructor(private store: Store<UserLoginState>) {
   }
 
-  public formValues: InterfaceFormValues = {
+  selectedUser;
+  public formValues: User = {
     name: '',
     age: '',
     password: '',
@@ -33,16 +27,33 @@ export class InfoComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.store.select('UserLogin').subscribe(({currentUser}) => {
+      this.selectedUser = currentUser.data;
+      return this.selectedUser;
+    });
 
-    const user = JSON.parse(localStorage.getItem('user'));
-
-    this.formValues.name = user.name;
-    this.formValues.age = user.age;
-    this.formValues.password = user.password;
-    this.formValues.birthday = moment(user.birthday, 'YYYY-DD-MM').format('YYYY/MM/DD');
-    this.formValues.dateOfLogin = moment(user.dateOfLogin, 'YYYY-DD-MM').format('DD MMMM YYYY');
-    this.formValues.dateOfNotification = moment(user.dateOfNotification, 'YYYY-DD-MM').format('DD-MMM-YY');
-    this.formValues.information = user.information;
+    this.formValues.name = this.selectedUser.name;
+    this.formValues.age = this.selectedUser.age;
+    this.formValues.password = this.selectedUser.password;
+    this.formValues.birthday = moment(this.selectedUser.birthday, 'YYYY-DD-MM').format('YYYY/MM/DD');
+    this.formValues.dateOfLogin = moment(this.selectedUser.dateOfLogin, 'YYYY-DD-MM').format('DD MMMM YYYY');
+    this.formValues.dateOfNotification = moment(this.selectedUser.dateOfNotification, 'YYYY-DD-MM').format('DD-MMM-YY');
+    this.formValues.information = this.selectedUser.information;
   }
+  click() {
+    this.store.select('UserLogin').subscribe(({currentUser}) => {
+      this.selectedUser = currentUser.data;
+      return this.selectedUser;
+    });
+    const info = this.store.select('UserLogin');
+    console.log(info);
 
+    this.formValues.name = this.selectedUser.name;
+    this.formValues.age = this.selectedUser.age;
+    this.formValues.password = this.selectedUser.password;
+    this.formValues.birthday = moment(this.selectedUser.birthday, 'YYYY-DD-MM').format('YYYY/MM/DD');
+    this.formValues.dateOfLogin = moment(this.selectedUser.dateOfLogin, 'YYYY-DD-MM').format('DD MMMM YYYY');
+    this.formValues.dateOfNotification = moment(this.selectedUser.dateOfNotification, 'YYYY-DD-MM').format('DD-MMM-YY');
+    this.formValues.information = this.selectedUser.information;
+  }
 }

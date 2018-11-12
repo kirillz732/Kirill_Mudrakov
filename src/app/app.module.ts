@@ -15,6 +15,11 @@ import {UpdateService} from './services/updateUser.service';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {UserListModule} from './user-list/user-list.module';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {StoreModule} from '@ngrx/store';
+import {userInfoReducers, userLoginReducers} from './redux/redusers/user.state';
+import {EffectsModule} from '@ngrx/effects';
+import {UserEffects} from './redux/effects/user.effects';
 
 export function translateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +48,12 @@ export function translateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    UserListModule
+    UserListModule,
+    StoreDevtoolsModule.instrument(),
+    StoreModule.forRoot({}),
+    StoreModule.forFeature('UserInfo', userInfoReducers),
+    StoreModule.forFeature('UserLogin', userLoginReducers),
+    EffectsModule.forRoot([UserEffects])
   ],
   exports: [
     LoaderComponent

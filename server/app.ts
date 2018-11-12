@@ -82,10 +82,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/users/login', (req, res) => {
-    setTimeout(() => {
     const Userr = users.find((user: User) => user.name === req.body.name && user.password === req.body.password);
     res.send(Userr);
-  }, 3000);
 });
 
 app.put('/users/change/:id', (req, res) => {

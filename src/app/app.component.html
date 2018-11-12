@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#" *ngIf="logIn() == 2">{{'Develop by' | translate}} Kirill</a>
-  <a class="navbar-brand" [routerLink]="'/info'" *ngIf="logIn() == 1">{{users.name}}</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" *ngIf="logIn() == 1" [routerLink]="'/info'">{{'Information' | translate}}</a>
@@ -20,3 +19,5 @@
 
 </nav>
 <router-outlet></router-outlet>
+
+{{store | async | json}}
